@@ -75,7 +75,23 @@ const Hero = () => {
                 initial="hidden"
                 animate="visible"
             >
-                <motion.div variants={staggerItem}>
+                <motion.div variants={staggerItem} className="mb-8">
+                    {/* Profile Image with animated glow border */}
+                    <motion.div
+                        className="relative w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-8 cursor-pointer"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 blur-md opacity-75 animate-pulse" />
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gray-900 shadow-2xl">
+                            <img
+                                src={personalInfo.profileImage}
+                                alt={personalInfo.name}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    </motion.div>
+
                     <motion.div
                         className="mb-6 inline-block"
                         animate={{ y: [0, -10, 0] }}
@@ -105,6 +121,19 @@ const Hero = () => {
                     className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                     variants={staggerItem}
                 >
+                    <Button
+                        href={personalInfo.resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="primary"
+                        className="bg-white text-black hover:bg-gray-200 border-0 flex items-center gap-2"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Download Resume
+                    </Button>
+
                     <Button
                         href="#projects"
                         variant="primary"
